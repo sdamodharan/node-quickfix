@@ -33,17 +33,17 @@ var fixClient = new initiator(
   onLogout: function(sessionID) {
     fixClient.emit('onLogout', common.stats(fixClient, sessionID));
   },
-  onLogonAttempt: function(message, sessionID) {
-    fixClient.emit('onLogonAttempt', common.stats(fixClient, sessionID, message));
+  onLogonAttempt: function(message, sessionID, rawMessage) {
+    fixClient.emit('onLogonAttempt', common.stats(fixClient, sessionID, message, rawMessage));
   },
-  toAdmin: function(message, sessionID) {
-    fixClient.emit('toAdmin', common.stats(fixClient, sessionID, message));
+  toAdmin: function(message, sessionID, rawMessage) {
+    fixClient.emit('toAdmin', common.stats(fixClient, sessionID, message, rawMessage));
   },
-  fromAdmin: function(message, sessionID) {
-    fixClient.emit('fromAdmin', common.stats(fixClient, sessionID, message));
+  fromAdmin: function(message, sessionID, rawMessage) {
+    fixClient.emit('fromAdmin', common.stats(fixClient, sessionID, message, rawMessage));
   },
-  fromApp: function(message, sessionID) {
-    fixClient.emit('fromApp', common.stats(fixClient, sessionID, message));
+  fromApp: function(message, sessionID, rawMessage) {
+    fixClient.emit('fromApp', common.stats(fixClient, sessionID, message, rawMessage));
   }
 }, options);
 

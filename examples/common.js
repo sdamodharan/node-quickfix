@@ -1,13 +1,16 @@
-function stats(fixentity, sessionID, message) {
+function stats(fixentity, sessionID, message, rawMessage) {
   var sess = fixentity.getSession(sessionID);
   var ret = {
     sessionID: sessionID,
     senderSeqNum: sess.senderSeqNum,
     targetSeqNum: sess.targetSeqNum
   };
-  if (message) {
-    ret.message = message;
-  }
+    if (message) {
+        ret.message = message;
+        if (rawMessage) {
+            ret.rawMessage = rawMessage.value;
+        }
+    }
   return ret;
 }
 

@@ -31,17 +31,17 @@ var fixServer = new fixAcceptor(
     onLogout: function (sessionID) {
       fixServer.emit('onLogout', common.stats(fixServer, sessionID));
     },
-    onLogonAttempt: function (message, sessionID) {
-      fixServer.emit('onLogonAttempt', common.stats(fixServer, sessionID, message));
+    onLogonAttempt: function (message, sessionID, rawMessage) {
+      fixServer.emit('onLogonAttempt', common.stats(fixServer, sessionID, message, rawMessage));
     },
-    toAdmin: function (message, sessionID) {
-      fixServer.emit('toAdmin', common.stats(fixServer, sessionID, message));
+    toAdmin: function (message, sessionID, rawMessage) {
+      fixServer.emit('toAdmin', common.stats(fixServer, sessionID, message, rawMessage));
     },
-    fromAdmin: function (message, sessionID) {
-      fixServer.emit('fromAdmin', common.stats(fixServer, sessionID, message));
+    fromAdmin: function (message, sessionID, rawMessage) {
+      fixServer.emit('fromAdmin', common.stats(fixServer, sessionID, message, rawMessage));
     },
-    fromApp: function (message, sessionID) {
-      fixServer.emit('fromApp', common.stats(fixServer, sessionID, message));
+    fromApp: function (message, sessionID, rawMessage) {
+      fixServer.emit('fromApp', common.stats(fixServer, sessionID, message, rawMessage));
     }
   }, {
     logonProvider: logonProvider,

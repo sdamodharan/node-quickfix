@@ -54,9 +54,12 @@ class Dispatcher {
 
             if(event->message != NULL) {
                 Local<Object> msg = Nan::New<Object>();
+                Local<Object> rawMsg = Nan::New<Object>();
                 FixMessageUtil::fix2Js(msg, event->message);
+                FixMessageUtil::setRawFixValue(rawMsg, event->message);
                 arguments.push_back(msg);
                 arguments.push_back(FixMessageUtil::sessionIdToJs(event->sessionId));
+                arguments.push_back(rawMsg);
 
                 delete event->message;
             } else {

@@ -288,6 +288,11 @@ public:
 				std::string(*senderCompId),
 				std::string(*targetCompId));
 	}
+
+	static void setRawFixValue(Local<v8::Object> msg, const FIX::Message* message) {
+		msg->Set(Nan::New<v8::String>("value").ToLocalChecked(), Nan::New<v8::String>(message->toString().c_str()).ToLocalChecked());
+		return;
+	}
 };
 
 #endif /* FIXMESSAGEUTIL_H_ */
